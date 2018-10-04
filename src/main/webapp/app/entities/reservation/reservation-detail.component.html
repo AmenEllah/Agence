@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reservation">
+            <h2><span jhiTranslate="agenceApp.reservation.detail.title">Reservation</span> {{reservation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="agenceApp.reservation.nbrAdultes">Nbr Adultes</span></dt>
+                <dd>
+                    <span>{{reservation.nbrAdultes}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.reservation.nbrEnfants">Nbr Enfants</span></dt>
+                <dd>
+                    <span>{{reservation.nbrEnfants}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.reservation.etat">Etat</span></dt>
+                <dd>
+                    <span>{{reservation.etat}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.reservation.voyage">Voyage</span></dt>
+                <dd>
+                    <div *ngIf="reservation.voyage">
+                        <a [routerLink]="['/voyage', reservation.voyage?.id, 'view']">{{reservation.voyage?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.reservation.confort">Confort</span></dt>
+                <dd>
+                    <div *ngIf="reservation.confort">
+                        <a [routerLink]="['/confort', reservation.confort?.id, 'view']">{{reservation.confort?.libele}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.reservation.hebergement">Hebergement</span></dt>
+                <dd>
+                    <div *ngIf="reservation.hebergement">
+                        <a [routerLink]="['/hebergement', reservation.hebergement?.id, 'view']">{{reservation.hebergement?.libele}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reservation', reservation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

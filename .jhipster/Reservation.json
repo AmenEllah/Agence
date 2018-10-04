@@ -1,0 +1,44 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "voyage",
+      "otherEntityName": "voyage",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "confort",
+      "otherEntityName": "confort",
+      "otherEntityField": "libele"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "hebergement",
+      "otherEntityName": "hebergement",
+      "otherEntityField": "libele"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "nbrAdultes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrEnfants",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20181004171219",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "reservation"
+}

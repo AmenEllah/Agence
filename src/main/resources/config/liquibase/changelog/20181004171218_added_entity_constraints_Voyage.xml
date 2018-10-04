@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Voyage.
+    -->
+    <changeSet id="20181004171218-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="rubrique_id"
+                                 baseTableName="voyage"
+                                 constraintName="fk_voyage_rubrique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rubrique"/>
+
+        <addForeignKeyConstraint baseColumnNames="lieu_depart_id"
+                                 baseTableName="voyage"
+                                 constraintName="fk_voyage_lieu_depart_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lieu"/>
+
+        <addForeignKeyConstraint baseColumnNames="lieu_arrive_id"
+                                 baseTableName="voyage"
+                                 constraintName="fk_voyage_lieu_arrive_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lieu"/>
+
+        <addForeignKeyConstraint baseColumnNames="environnement_id"
+                                 baseTableName="voyage"
+                                 constraintName="fk_voyage_environnement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="environnement"/>
+
+    </changeSet>
+</databaseChangeLog>

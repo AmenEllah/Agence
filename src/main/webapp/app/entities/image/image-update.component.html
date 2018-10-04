@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-image-heading" jhiTranslate="agenceApp.image.home.createOrEditLabel">Create or edit a Image</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!image.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="image.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="agenceApp.image.name" for="field_name">Name</label>
+                    <div>
+                        <img [src]="'data:' + image.nameContentType + ';base64,' + image.name" style="max-height: 100px;" *ngIf="image.name" alt="image image"/>
+                        <div *ngIf="image.name" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{image.nameContentType}}, {{byteSize(image.name)}}</span>
+                            <button type="button" (click)="clearInputImage('name', 'nameContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_name" (change)="setFileData($event, image, 'name', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="image.name" />
+                    <input type="hidden" class="form-control" name="nameContentType" id="field_nameContentType"
+                        [(ngModel)]="image.nameContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="agenceApp.image.lieu" for="field_lieu">Lieu</label>
+                    <select class="form-control" id="field_lieu" name="lieu" [(ngModel)]="image.lieu" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="lieuOption.id === image.lieu?.id ? image.lieu : lieuOption" *ngFor="let lieuOption of lieus; trackBy: trackLieuById">{{lieuOption.libele}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

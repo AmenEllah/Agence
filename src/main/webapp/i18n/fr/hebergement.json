@@ -1,0 +1,24 @@
+
+{
+    "agenceApp": {
+        "hebergement" : {
+            "home": {
+                "title": "Hebergements",
+                "createLabel": "Créer un nouveau Hebergement",
+                "createOrEditLabel": "Créer ou éditer un Hebergement"
+            },
+            "created": "Un nouveau Hebergement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Hebergement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Hebergement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Hebergement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Hebergement"
+            },
+            "libele": "Libele",
+            "valeur": "Valeur",
+            "reservation": "Reservation"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rubrique">
+            <h2><span jhiTranslate="agenceApp.rubrique.detail.title">Rubrique</span> {{rubrique.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="agenceApp.rubrique.libele">Libele</span></dt>
+                <dd>
+                    <span>{{rubrique.libele}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.rubrique.lieu">Lieu</span></dt>
+                <dd>
+                    <span *ngFor="let lieu of rubrique.lieus; let last = last">
+                        <a [routerLink]="['/lieu', lieu?.id, 'view' ]">{{lieu.libele}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rubrique', rubrique.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

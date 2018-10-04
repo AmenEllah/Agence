@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="image">
+            <h2><span jhiTranslate="agenceApp.image.detail.title">Image</span> {{image.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="agenceApp.image.name">Name</span></dt>
+                <dd>
+                    <div *ngIf="image.name">
+                        <a (click)="openFile(image.nameContentType, image.name)">
+                            <img [src]="'data:' + image.nameContentType + ';base64,' + image.name" style="max-width: 100%;" alt="image image"/>
+                        </a>
+                        {{image.nameContentType}}, {{byteSize(image.name)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.image.lieu">Lieu</span></dt>
+                <dd>
+                    <div *ngIf="image.lieu">
+                        <a [routerLink]="['/lieu', image.lieu?.id, 'view']">{{image.lieu?.libele}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image', image.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

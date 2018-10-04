@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="agenceApp.rubrique.home.title">Rubriques</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rubrique" [routerLink]="['/rubrique/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="agenceApp.rubrique.home.createLabel">
+            Create new Rubrique
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="rubriques">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="agenceApp.rubrique.libele">Libele</span></th>
+            <th><span jhiTranslate="agenceApp.rubrique.lieu">Lieu</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rubrique of rubriques ;trackBy: trackId">
+                <td><a [routerLink]="['/rubrique', rubrique.id, 'view' ]">{{rubrique.id}}</a></td>
+                <td>{{rubrique.libele}}</td>
+                <td>
+                    <span *ngFor="let lieu of rubrique.lieus; let last = last">
+                            <a class="form-control-static" [routerLink]="['../lieu', lieu?.id, 'view' ]">{{lieu.libele}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rubrique', rubrique.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rubrique', rubrique.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rubrique/'+ rubrique.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

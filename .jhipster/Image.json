@@ -1,0 +1,23 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "lieu",
+      "otherEntityName": "lieu",
+      "otherEntityField": "libele"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "changelogDate": "20181004171225",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "image"
+}

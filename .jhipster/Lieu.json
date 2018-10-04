@@ -1,0 +1,42 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "voyage1",
+      "otherEntityName": "voyage",
+      "otherEntityRelationshipName": "lieuDepart"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "voyage2",
+      "otherEntityName": "voyage",
+      "otherEntityRelationshipName": "lieuArrive"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "relationshipValidateRules": "required",
+      "relationshipName": "image",
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "lieu"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "relationshipName": "rubrique",
+      "otherEntityName": "rubrique",
+      "ownerSide": false,
+      "otherEntityRelationshipName": "lieu"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20181004171223",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "lieu"
+}

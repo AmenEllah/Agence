@@ -1,0 +1,23 @@
+
+{
+    "agenceApp": {
+        "environnement" : {
+            "home": {
+                "title": "Environnements",
+                "createLabel": "Create a new Environnement",
+                "createOrEditLabel": "Create or edit a Environnement"
+            },
+            "created": "A new Environnement is created with identifier {{ param }}",
+            "updated": "A Environnement is updated with identifier {{ param }}",
+            "deleted": "A Environnement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Environnement {{ id }}?"
+            },
+            "detail": {
+                "title": "Environnement"
+            },
+            "libele": "Libele",
+            "voyage": "Voyage"
+        }
+    }
+}

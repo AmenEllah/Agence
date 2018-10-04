@@ -1,0 +1,24 @@
+
+{
+    "agenceApp": {
+        "confort" : {
+            "home": {
+                "title": "Conforts",
+                "createLabel": "Créer un nouveau Confort",
+                "createOrEditLabel": "Créer ou éditer un Confort"
+            },
+            "created": "Un nouveau Confort a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Confort avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Confort avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Confort {{ id }} ?"
+            },
+            "detail": {
+                "title": "Confort"
+            },
+            "libele": "Libele",
+            "valeur": "Valeur",
+            "reservation": "Reservation"
+        }
+    }
+}

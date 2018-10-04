@@ -1,0 +1,59 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "reservation",
+      "otherEntityName": "reservation",
+      "otherEntityRelationshipName": "voyage"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "rubrique",
+      "otherEntityName": "rubrique",
+      "otherEntityField": "libele"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "lieuDepart",
+      "otherEntityName": "lieu",
+      "otherEntityField": "libele"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "lieuArrive",
+      "otherEntityName": "lieu",
+      "otherEntityField": "libele"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipName": "environnement",
+      "otherEntityName": "environnement",
+      "otherEntityField": "libele"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "dateDepart",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duree",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "changelogDate": "20181004171218",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "voyage"
+}

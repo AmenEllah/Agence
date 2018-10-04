@@ -1,0 +1,26 @@
+
+{
+    "agenceApp": {
+        "lieu" : {
+            "home": {
+                "title": "Lieus",
+                "createLabel": "Créer un nouveau Lieu",
+                "createOrEditLabel": "Créer ou éditer un Lieu"
+            },
+            "created": "Un nouveau Lieu a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Lieu avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Lieu avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Lieu {{ id }} ?"
+            },
+            "detail": {
+                "title": "Lieu"
+            },
+            "libele": "Libele",
+            "voyage1": "Voyage 1",
+            "voyage2": "Voyage 2",
+            "image": "Image",
+            "rubrique": "Rubrique"
+        }
+    }
+}

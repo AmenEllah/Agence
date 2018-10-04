@@ -1,0 +1,22 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "voyage",
+      "otherEntityName": "voyage",
+      "otherEntityRelationshipName": "environnement"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20181004171224",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "environnement"
+}

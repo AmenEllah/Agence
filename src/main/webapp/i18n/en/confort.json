@@ -1,0 +1,24 @@
+
+{
+    "agenceApp": {
+        "confort" : {
+            "home": {
+                "title": "Conforts",
+                "createLabel": "Create a new Confort",
+                "createOrEditLabel": "Create or edit a Confort"
+            },
+            "created": "A new Confort is created with identifier {{ param }}",
+            "updated": "A Confort is updated with identifier {{ param }}",
+            "deleted": "A Confort is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Confort {{ id }}?"
+            },
+            "detail": {
+                "title": "Confort"
+            },
+            "libele": "Libele",
+            "valeur": "Valeur",
+            "reservation": "Reservation"
+        }
+    }
+}

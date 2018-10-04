@@ -1,0 +1,26 @@
+
+{
+    "agenceApp": {
+        "lieu" : {
+            "home": {
+                "title": "Lieus",
+                "createLabel": "Create a new Lieu",
+                "createOrEditLabel": "Create or edit a Lieu"
+            },
+            "created": "A new Lieu is created with identifier {{ param }}",
+            "updated": "A Lieu is updated with identifier {{ param }}",
+            "deleted": "A Lieu is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Lieu {{ id }}?"
+            },
+            "detail": {
+                "title": "Lieu"
+            },
+            "libele": "Libele",
+            "voyage1": "Voyage 1",
+            "voyage2": "Voyage 2",
+            "image": "Image",
+            "rubrique": "Rubrique"
+        }
+    }
+}

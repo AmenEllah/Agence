@@ -1,0 +1,31 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipName": "voyage",
+      "otherEntityName": "voyage",
+      "otherEntityRelationshipName": "rubrique"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required",
+      "otherEntityRelationshipName": "rubrique",
+      "relationshipName": "lieu",
+      "otherEntityName": "lieu",
+      "otherEntityField": "libele",
+      "ownerSide": true
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "libele",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20181004171222",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "rubrique"
+}

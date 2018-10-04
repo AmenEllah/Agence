@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="voyage">
+            <h2><span jhiTranslate="agenceApp.voyage.detail.title">Voyage</span> {{voyage.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="agenceApp.voyage.dateDepart">Date Depart</span></dt>
+                <dd>
+                    <span>{{voyage.dateDepart}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.duree">Duree</span></dt>
+                <dd>
+                    <span>{{voyage.duree}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.description">Description</span></dt>
+                <dd>
+                    <span>{{voyage.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.rubrique">Rubrique</span></dt>
+                <dd>
+                    <div *ngIf="voyage.rubrique">
+                        <a [routerLink]="['/rubrique', voyage.rubrique?.id, 'view']">{{voyage.rubrique?.libele}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.lieuDepart">Lieu Depart</span></dt>
+                <dd>
+                    <div *ngIf="voyage.lieuDepart">
+                        <a [routerLink]="['/lieu', voyage.lieuDepart?.id, 'view']">{{voyage.lieuDepart?.libele}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.lieuArrive">Lieu Arrive</span></dt>
+                <dd>
+                    <div *ngIf="voyage.lieuArrive">
+                        <a [routerLink]="['/lieu', voyage.lieuArrive?.id, 'view']">{{voyage.lieuArrive?.libele}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="agenceApp.voyage.environnement">Environnement</span></dt>
+                <dd>
+                    <div *ngIf="voyage.environnement">
+                        <a [routerLink]="['/environnement', voyage.environnement?.id, 'view']">{{voyage.environnement?.libele}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/voyage', voyage.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
