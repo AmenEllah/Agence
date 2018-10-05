@@ -20,7 +20,8 @@ import { HebergementService } from 'app/entities/hebergement';
 export class ReservationUpdateComponent implements OnInit {
     private _reservation: IReservation;
     isSaving: boolean;
-
+    idVoyage: number;
+    etat: string;
     voyages: IVoyage[];
 
     conforts: IConfort[];
@@ -37,6 +38,9 @@ export class ReservationUpdateComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.idVoyage = this.voyageService.idVoayage;
+        this.etat="En attente de payement"
+
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ reservation }) => {
             this.reservation = reservation;

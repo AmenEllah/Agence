@@ -14,6 +14,7 @@ type EntityArrayResponseType = HttpResponse<IVoyage[]>;
 
 @Injectable({ providedIn: 'root' })
 export class VoyageService {
+    idVoayage:number;
     private resourceUrl = SERVER_API_URL + 'api/voyages';
 
     constructor(private http: HttpClient) {}

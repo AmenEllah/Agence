@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpResponse} from "@angular/common/http";
 import {Voyage} from "app/shared/model/voyage.model";
 import {VoyageService} from "app/entities/voyage";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-home',
@@ -10,7 +11,7 @@ import {VoyageService} from "app/entities/voyage";
 })
 export class HomeComponent implements OnInit {
     voyages:Voyage[]=[];
-    constructor(private voyageService:VoyageService){}
+    constructor(private voyageService:VoyageService , private router: Router){}
     loadAll(){
         this.voyageService.query().subscribe(
             (res:HttpResponse<Voyage[]>)=>{
@@ -22,5 +23,9 @@ export class HomeComponent implements OnInit {
     ngOnInit(){
         console.log("ngOnInit...");
         this.loadAll();
+    }
+
+    onClickVoyage(id: number) {
+        this.voyageService.idVoayage=id;
     }
 }

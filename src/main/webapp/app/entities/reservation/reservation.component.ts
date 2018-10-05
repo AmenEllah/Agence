@@ -15,12 +15,11 @@ export class ReservationComponent implements OnInit, OnDestroy {
     reservations: IReservation[];
     currentAccount: any;
     eventSubscriber: Subscription;
-
     constructor(
         private reservationService: ReservationService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
     ) {}
 
     loadAll() {

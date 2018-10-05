@@ -21,16 +21,15 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.etat" for="field_etat">Etat</label>
-                    <input type="text" class="form-control" name="etat" id="field_etat"
-                        [(ngModel)]="reservation.etat" />
+                    <input type="text" disabled="disabled" [value]="etat" class="form-control" name="etat" id="field_etat"
+                        [(ngModel)]="etat" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.voyage" for="field_voyage">Voyage</label>
-                    <select class="form-control" id="field_voyage" name="voyage" [(ngModel)]="reservation.voyage" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="voyageOption.id === reservation.voyage?.id ? reservation.voyage : voyageOption" *ngFor="let voyageOption of voyages; trackBy: trackVoyageById">{{voyageOption.id}}</option>
-                    </select>
+                    <input type="text" class="form-control" id="field_voyage" name="voyage" disabled="disabled" [value]="idVoyage" [(ngModel)]="idVoyage" />
+                       
+                </input>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.confort" for="field_confort">Confort</label>
