@@ -1,17 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+import {
+    ActivatedRoute
+} from '@angular/router';
+import {
+    HttpResponse,
+    HttpErrorResponse
+} from '@angular/common/http';
+import {
+    Observable
+} from 'rxjs';
+import {
+    JhiAlertService
+} from 'ng-jhipster';
 
-import { IReservation } from 'app/shared/model/reservation.model';
-import { ReservationService } from './reservation.service';
-import { IVoyage } from 'app/shared/model/voyage.model';
-import { VoyageService } from 'app/entities/voyage';
-import { IConfort } from 'app/shared/model/confort.model';
-import { ConfortService } from 'app/entities/confort';
-import { IHebergement } from 'app/shared/model/hebergement.model';
-import { HebergementService } from 'app/entities/hebergement';
+import {
+    IReservation
+} from 'app/shared/model/reservation.model';
+import {
+    ReservationService
+} from './reservation.service';
+import {
+    IVoyage
+} from 'app/shared/model/voyage.model';
+import {
+    VoyageService
+} from 'app/entities/voyage';
+import {
+    IConfort
+} from 'app/shared/model/confort.model';
+import {
+    ConfortService
+} from 'app/entities/confort';
+import {
+    IHebergement
+} from 'app/shared/model/hebergement.model';
+import {
+    HebergementService
+} from 'app/entities/hebergement';
 
 @Component({
     selector: 'jhi-reservation-update',
@@ -23,6 +51,7 @@ export class ReservationUpdateComponent implements OnInit {
     idVoyage: number;
     etat: string;
     voyages: IVoyage[];
+    voyage: IVoyage;
 
     conforts: IConfort[];
 
@@ -39,30 +68,38 @@ export class ReservationUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.idVoyage = this.voyageService.idVoayage;
-        this.etat="En attente de payement"
 
         this.isSaving = false;
-        this.activatedRoute.data.subscribe(({ reservation }) => {
+        this.activatedRoute.data.subscribe(({
+            reservation
+        }) => {
             this.reservation = reservation;
         });
         this.voyageService.query().subscribe(
-            (res: HttpResponse<IVoyage[]>) => {
+            (res: HttpResponse < IVoyage[] > ) => {
                 this.voyages = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
         this.confortService.query().subscribe(
-            (res: HttpResponse<IConfort[]>) => {
+            (res: HttpResponse < IConfort[] > ) => {
                 this.conforts = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
         this.hebergementService.query().subscribe(
-            (res: HttpResponse<IHebergement[]>) => {
+            (res: HttpResponse < IHebergement[] > ) => {
                 this.hebergements = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+
+             this.voyageService.find(this.idVoyage).subscribe(
+            (res: HttpResponse <IVoyage> ) => {
+                console.log(res.body);
+                this.voyage = res.body;
+            });
+
     }
 
     previousState() {
@@ -70,6 +107,8 @@ export class ReservationUpdateComponent implements OnInit {
     }
 
     save() {
+        this.reservation.etat = "En attente de Payement";
+       this.reservation.voyage=this.voyage;
         this.isSaving = true;
         if (this.reservation.id !== undefined) {
             this.subscribeToSaveResponse(this.reservationService.update(this.reservation));
@@ -78,8 +117,8 @@ export class ReservationUpdateComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<HttpResponse<IReservation>>) {
-        result.subscribe((res: HttpResponse<IReservation>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    private subscribeToSaveResponse(result: Observable < HttpResponse < IReservation >> ) {
+        result.subscribe((res: HttpResponse < IReservation > ) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
     }
 
     private onSaveSuccess() {

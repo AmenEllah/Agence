@@ -1,65 +1,70 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-reservation-heading" jhiTranslate="agenceApp.reservation.home.createOrEditLabel">Create or edit a Reservation</h2>
+            <h2 id="jhi-reservation-heading" jhiTranslate="agenceApp.reservation.home.createOrEditLabel">Create or edit
+                a Reservation</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!reservation.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        [(ngModel)]="reservation.id" readonly />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="agenceApp.reservation.nbrAdultes" for="field_nbrAdultes">Nbr Adultes</label>
-                    <input type="number" class="form-control" name="nbrAdultes" id="field_nbrAdultes"
-                        [(ngModel)]="reservation.nbrAdultes" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="agenceApp.reservation.nbrEnfants" for="field_nbrEnfants">Nbr Enfants</label>
-                    <input type="number" class="form-control" name="nbrEnfants" id="field_nbrEnfants"
-                        [(ngModel)]="reservation.nbrEnfants" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="agenceApp.reservation.etat" for="field_etat">Etat</label>
-                    <input type="text" disabled="disabled" [value]="etat" class="form-control" name="etat" id="field_etat"
-                        [(ngModel)]="etat" />
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="reservation.id" readonly />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.voyage" for="field_voyage">Voyage</label>
-                    <input type="text" class="form-control" id="field_voyage" name="voyage" disabled="disabled" [value]="idVoyage" [(ngModel)]="idVoyage" />
-                       
-                </input>
+                    <select disabled="disabled" class="form-control" id="field_voyage" name="voyage" [(ngModel)]="reservation.voyage">
+                        <option [ngValue]="reservation.voyage">{{voyage.id}}</option>
+                        <option [ngValue]="voyageOption.id === reservation.voyage?.id ? reservation.voyage : voyageOption"
+                            *ngFor="let voyageOption of voyages; trackBy: trackVoyageById">{{voyageOption.id}}</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="agenceApp.reservation.nbrAdultes" for="field_nbrAdultes">Nbr
+                        Adultes</label>
+                    <input type="number" class="form-control" name="nbrAdultes" id="field_nbrAdultes" [(ngModel)]="reservation.nbrAdultes" />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="agenceApp.reservation.nbrEnfants" for="field_nbrEnfants">Nbr
+                        Enfants</label>
+                    <input type="number" class="form-control" name="nbrEnfants" id="field_nbrEnfants" [(ngModel)]="reservation.nbrEnfants" />
+                </div>
+                
+
+                
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.confort" for="field_confort">Confort</label>
-                    <select class="form-control" id="field_confort" name="confort" [(ngModel)]="reservation.confort"  required>
+                    <select class="form-control" id="field_confort" name="confort" [(ngModel)]="reservation.confort"
+                        required>
                         <option *ngIf="!editForm.value.confort" [ngValue]="null" selected></option>
-                        <option [ngValue]="confortOption.id === reservation.confort?.id ? reservation.confort : confortOption" *ngFor="let confortOption of conforts; trackBy: trackConfortById">{{confortOption.libele}}</option>
+                        <option [ngValue]="confortOption.id === reservation.confort?.id ? reservation.confort : confortOption"
+                            *ngFor="let confortOption of conforts; trackBy: trackConfortById">{{confortOption.libele}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.confort?.dirty && editForm.controls.confort?.invalid)">
-                    <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.confort?.errors?.required" jhiTranslate="entity.validation.required">
+                    <small class="form-text text-danger" [hidden]="!editForm.controls.confort?.errors?.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="agenceApp.reservation.hebergement" for="field_hebergement">Hebergement</label>
-                    <select class="form-control" id="field_hebergement" name="hebergement" [(ngModel)]="reservation.hebergement"  required>
+                    <select class="form-control" id="field_hebergement" name="hebergement" [(ngModel)]="reservation.hebergement"
+                        required>
                         <option *ngIf="!editForm.value.hebergement" [ngValue]="null" selected></option>
-                        <option [ngValue]="hebergementOption.id === reservation.hebergement?.id ? reservation.hebergement : hebergementOption" *ngFor="let hebergementOption of hebergements; trackBy: trackHebergementById">{{hebergementOption.libele}}</option>
+                        <option [ngValue]="hebergementOption.id === reservation.hebergement?.id ? reservation.hebergement : hebergementOption"
+                            *ngFor="let hebergementOption of hebergements; trackBy: trackHebergementById">{{hebergementOption.libele}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.hebergement?.dirty && editForm.controls.hebergement?.invalid)">
-                    <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.hebergement?.errors?.required" jhiTranslate="entity.validation.required">
+                    <small class="form-text text-danger" [hidden]="!editForm.controls.hebergement?.errors?.required"
+                        jhiTranslate="entity.validation.required">
                         This field is required.
                     </small>
                 </div>
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
